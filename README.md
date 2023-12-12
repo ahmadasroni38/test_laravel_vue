@@ -17,18 +17,24 @@ Anda diminta untuk membuat aplikasi sederhana yang memiliki fitur sebagai beriku
 #### Backend (Laravel 9):
 
 1. Buat model, migrasi, dan _seeder_ untuk entitas "Product" dengan atribut: nama, deskripsi, dan harga.
-2. Implementasikan API CRUD untuk entitas "Product".
-3. Buat _endpoint_ API untuk mengambil daftar produk dengan Vue.
-4. Buat _endpoint_ API untuk mengirimkan data produk baru dari Vue.
+2. Implementasikan Authentication pada project
+3. Implementasikan API CRUD untuk entitas "Product".
+4. Buat _endpoint_ API untuk mengambil daftar produk dengan Vue.
+5. Buat _endpoint_ API untuk mengirimkan data produk baru dari Vue.
+5. Buat _endpoint_ API untuk menghapus data produk baru dari Vue.
 
 #### Frontend (Vue 3):
 
+1. Buat halaman Vue yang dapat mendaftarkan user baru.
+2. Buat halaman Vue yang dapat digunakan untuk melakukan proses login. 
 1. Buat halaman Vue yang menampilkan daftar produk dari _endpoint_ API backend.
 2. Tambahkan formulir Vue untuk menambahkan produk baru dan kirimkan ke backend menggunakan _endpoint_ API.
-3. Buat tata letak dan tampilan yang menarik menggunakan Vue dan CSS.
+2. Tambahkan formulir Vue untuk menghapus produk.
+3. Buat tata letak dan tampilan yang menarik menggunakan Vue dan Tailwind CSS.
 
 #### Database (MySQL):
 
+1. Desain dan buat tabel "users" untuk menyimpan data users.
 1. Desain dan buat tabel "products" untuk menyimpan data produk.
 
 ### Langkah-langkah Pengujian:
