@@ -60,3 +60,7 @@ Anda diminta untuk membuat aplikasi sederhana yang memiliki fitur sebagai beriku
 4. Sertakan panduan instalasi dan penggunaan jika diperlukan.
 
 Semoga berhasil, dan kami menantikan hasil kerja Anda!
+
+### Cara Penggunaan : 
+
+1. 
