@@ -1,31 +1,46 @@
 // https://www.bezkoder.com/vue-js-crud-app/
+import axios from "axios";
 
-class TutorialDataService {
-    getAll() {
-        return http.get("http://127.0.0.1:8000/api/product/list");
+class productService {
+    async getAll() {
+        return await axios.get("http://127.0.0.1:8000/api/product/list");
     }
 
-    getDetail(id) {
-        return http.get(`http://127.0.0.1:8000/api/product/detail/${id}`);
+    async getDetail(id) {
+        return await axios.get(
+            `http://127.0.0.1:8000/api/product/detail/${id}`
+        );
     }
 
-    createData(data) {
-        return http.post(
+    async createData(data) {
+        return await axios.post(
             "http://127.0.0.1:8000/api/product/create/action",
-            data
+            data,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
         );
     }
 
-    updateData(id, data) {
-        return http.put(
-            `http://127.0.0.1:8000/api/product/update/action/{id}`,
-            data
+    async updateData(id, data) {
+        return await axios.post(
+            `http://127.0.0.1:8000/api/product/update/action/${id}`,
+            data,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
         );
     }
 
-    deleteData(id) {
-        return http.delete(`http://127.0.0.1:8000/api/product/delete/{id}`);
+    async deleteData(id) {
+        return await axios.post(
+            `http://127.0.0.1:8000/api/product/delete/${id}`
+        );
     }
 }
 
-export default new TutorialDataService();
+export default new productService();

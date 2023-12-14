@@ -16,12 +16,12 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('product')->insert(
-            [
-                'nama' => 'Laptop',
-                'deskripsi' => 'Laptop murah meriah',
-                'harga' => 20000
-            ]
-        );
+        for ($i = 1; $i <= 20; $i++) {
+            DB::table('product')->insert([
+                'nama' => 'Product ' . $i,
+                'deskripsi' => 'Description for Product ' . $i,
+                'harga' => rand(1000, 50000), // Generate a random price between 1000 and 50000
+            ]);
+        }
     }
 }

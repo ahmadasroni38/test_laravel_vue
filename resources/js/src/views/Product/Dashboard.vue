@@ -18,19 +18,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b">
+            <tr class="bg-white border-b" v-for="(item, index) in items" :key="index">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    No
+                    {{ index + 1 }}
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                    {{ item.nama }}
                 </td>
                 <td class="px-6 py-4">
-                    $2999
+                    {{ item.harga }}
                 </td>
                 <td class="px-6 py-4">
-                    <Button />
-                    <Button />
+                    <Button label="Edit" link="update" :id="item.id" typeButton="success"/>
+                    <Button label="Delete" typeButton="danger" @click="deleteData(item.id)"/>
                 </td>
             </tr>
         </tbody>
@@ -40,10 +40,47 @@
 </template>
 
 <script>
-import Button from '../../components/Button.vue'
+import Button from '../../components/Button.vue';
+import product from '../../service/product';
+
 export default {
     components: {
         Button
+    },
+    data() {
+        return {
+            items: []
+        }
+    },
+    methods: {
+        getAll() {
+            product.getAll()
+            .then(response => {
+                this.items = response.data.products;
+                // console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e)
+            })
+        },
+
+        deleteData(id) {
+            if (confirm('Are you sure you want to delete?')) {
+                product.deleteData(id)
+                .then(response => {
+                    alert('data berhasil di hapus');
+                    // get data
+                    this.getAll();
+                    console.log(response.data);
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+            }
+        }
+    },
+    mounted() {
+        this.getAll()
     }
 }
 </script>

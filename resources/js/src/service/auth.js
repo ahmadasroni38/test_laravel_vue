@@ -1,14 +1,16 @@
+import axios from "axios";
+
 class TutorialDataService {
     authRegister() {
-        return http.post("http://127.0.0.1:8000/api/auth/register");
+        return axios.post("http://127.0.0.1:8000/api/auth/register");
     }
 
     authLogin() {
-        return http.post(`http://127.0.0.1:8000/api/auth/login`);
+        return axios.post(`http://127.0.0.1:8000/api/auth/login`);
     }
 
     authLogout() {
-        return http.post("http://127.0.0.1:8000/api/auth/logout");
+        return axios.post("http://127.0.0.1:8000/api/auth/logout");
     }
 }
 

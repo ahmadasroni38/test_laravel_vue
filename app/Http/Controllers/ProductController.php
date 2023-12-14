@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -27,6 +28,15 @@ class ProductController extends Controller
     {
         try {
             // Validate the request data here if needed
+            $validator = Validator::make($request->all(), [
+                'nama' => 'required',
+                'deskripsi' => 'required',
+                'harga' => 'required',
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 400);
+            }
 
             $product = Product::create([
                 'nama' => $request->input('nama'),
