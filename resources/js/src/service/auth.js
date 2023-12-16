@@ -1,17 +1,35 @@
 import axios from "axios";
 
-class TutorialDataService {
-    authRegister() {
-        return axios.post("http://127.0.0.1:8000/api/auth/register");
+class auth {
+    async authRegister(data) {
+        return await axios.post(
+            "http://127.0.0.1:8000/api/auth/register",
+            data,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
     }
 
-    authLogin() {
-        return axios.post(`http://127.0.0.1:8000/api/auth/login`);
+    async authLogin(data) {
+        return await axios.post("http://127.0.0.1:8000/api/auth/login", data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     }
 
-    authLogout() {
-        return axios.post("http://127.0.0.1:8000/api/auth/logout");
+    // prettier-ignore
+    async authLogout() {
+        return await fetch("http://127.0.0.1:8000/api/auth/logout", {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+        });
     }
 }
 
-export default new TutorialDataService();
+export default new auth();

@@ -38,8 +38,8 @@ class AuthController extends Controller
                 // 'phone_number' => $request->phone_number,
                 // 'avatar' => 'avatar_default.png' 
 
-                'avatar' => $request->avatar,
-                'phone_number' => $request->phone_number,
+                // 'avatar' => $request->avatar,
+                // 'phone_number' => $request->phone_number,
 
             ]);
 

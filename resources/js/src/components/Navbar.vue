@@ -21,7 +21,7 @@
                         <div v-if="isOpen2" class="fixed inset-0 w-full h-screen z-20 bg-black opacity-25" @click="isOpen2 = false"></div>
                         <div class="absolute z-30 right-0 mt-2" :class="{'hidden': !isOpen2}">
                             <div class="bg-white rounded-lg shadow-lg py-2 w-48">
-                                <a href="#" class="block text-purple-600 font-semibold px-4 py-2 | hover:text-white hover:bg-purple-500">Sign out</a>
+                                <button @click="authLogout()" class="block text-purple-600 font-semibold px-4 py-2 | hover:text-white hover:bg-purple-500">Log Out</button>
                             </div>
                         </div>
                     </div>
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import auth from '../service/auth';
+
 export default {
     name:'Navbar',
     data() {
@@ -40,6 +42,24 @@ export default {
             isOpen1: true,
             isOpen2: false,
         }
+    },
+    methods: {
+    authLogout() {
+
+        auth.authLogout()
+            .then(response => {
+                console.log(response.data);
+                alert('Berhasil logout')
+                localStorage.removeItem('token')
+                setTimeout(() => {
+                    this.$router.push('/login');
+                }, 1000)
+            })
+            .catch(e => {
+                alert(e.message)
+                console.log(e);
+            });
+        },
     }
 }
 

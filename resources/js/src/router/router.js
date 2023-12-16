@@ -1,33 +1,37 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
-// Layout
+// Layout Page
 import Layout from "../layout/Layout.vue";
-// Auth
+// Auth Page
 import Login from "../views/Auth/Login.vue";
 import Register from "../views/Auth/Register.vue";
-// Product
+// Product Page
 import Dashboard from "../views/Product/Dashboard.vue";
 import Create from "../views/Product/Create.vue";
 import Update from "../views/Product/Update.vue";
+
+// Auth middleware
+import auth from "../middleware/auth";
 
 const router = createRouter({
     history: createWebHashHistory("/"),
     routes: [
         {
             path: "/login",
-            name: "Login",
+            name: "login",
             component: Login,
         },
         {
             path: "/register",
-            name: "Register",
+            name: "register",
             component: Register,
         },
         {
             path: "/",
-            name: "Product",
+            name: "product",
             component: Layout,
             redirect: "/",
+            beforeEnter: [auth],
             children: [
                 {
                     path: "/",
