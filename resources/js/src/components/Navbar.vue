@@ -53,7 +53,7 @@ export default {
                 localStorage.removeItem('token')
                 setTimeout(() => {
                     this.$router.push('/login');
-                }, 1000)
+                }, 100)
             })
             .catch(e => {
                 alert(e.message)

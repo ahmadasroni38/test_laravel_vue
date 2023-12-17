@@ -81,6 +81,17 @@ class ProductController extends Controller
     public function update_action(Request $request, $id)
     {
         try {
+            // Validate the request data here if needed
+            $validator = Validator::make($request->all(), [
+                'nama' => 'required',
+                'deskripsi' => 'required',
+                'harga' => 'required',
+            ]);
+    
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 400);
+            }
+
             $product = Product::find($id);
 
             if (!$product) {

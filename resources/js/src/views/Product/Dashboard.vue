@@ -56,8 +56,8 @@ export default {
         getAll() {
             product.getAll()
             .then(response => {
+                console.log(response);
                 this.items = response.data.products;
-                // console.log(response.data);
             })
             .catch(e => {
                 console.log(e)
